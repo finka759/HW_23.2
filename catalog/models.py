@@ -64,11 +64,11 @@ class Product(models.Model):
         verbose_name="стоимость покупки",
         help_text="введите стоимость покупки",
     )
-    # manufactured_at = models.DateField(
-    #     verbose_name="дата производства продукта",
-    #     help_text="заполните дату производства продукта",
-    #     **NULLABLE,
-    # )
+    manufactured_at = models.DateField(
+        verbose_name="дата производства продукта",
+        help_text="заполните дату производства продукта",
+        **NULLABLE,
+    )
 
     class Meta:
         verbose_name = "Продукты"
