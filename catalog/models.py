@@ -23,7 +23,7 @@ class Category(models.Model):
         ordering = ["category_name"]
 
     def __str__(self):
-        return f"{self.category_name} {self.category_description}"
+        return f"{self.category_name}"
 
 
 class Product(models.Model):
@@ -59,8 +59,9 @@ class Product(models.Model):
         help_text="заполните дату изменения",
         **NULLABLE,
     )
-    product_pay_for_sail = models.CharField(
-        max_length=128,
+    product_pay_for_sail = models.DecimalField(
+        max_digits=19,
+        decimal_places=2,
         verbose_name="стоимость покупки",
         help_text="введите стоимость покупки",
     )
