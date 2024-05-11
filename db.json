@@ -1,0 +1,180 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "категория_1",
+      "category_description": "описание_категории_1"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "категория_2",
+      "category_description": "описание_категории_2"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "категория_3",
+      "category_description": "описание_категории_3"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "category_name": "категория_4",
+      "category_description": "описание_категории_4"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+      "category_name": "категория_5",
+      "category_description": "описание_категории_5"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+      "category_name": "категория_6",
+      "category_description": "описание_категории_6"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "product_name": "продукт_1",
+      "product_description": "описание_продукта_1",
+      "product_image": "",
+      "product_category": 3,
+      "product_created_at": "2024-01-01",
+      "product_updated_at": "2024-01-02",
+      "product_pay_for_sail": "1.10"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "product_name": "имя_продукта_2",
+      "product_description": "описание_продукта_2",
+      "product_image": "",
+      "product_category": 1,
+      "product_created_at": "2024-02-01",
+      "product_updated_at": "2024-02-02",
+      "product_pay_for_sail": "2.22"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "product_name": "имя_продукта_3",
+      "product_description": "описание_продукта_3",
+      "product_image": "",
+      "product_category": 2,
+      "product_created_at": "2024-03-01",
+      "product_updated_at": "2024-03-02",
+      "product_pay_for_sail": "3.33"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "product_name": "имя_продукта_4",
+      "product_description": "описане_продукта_4",
+      "product_image": "",
+      "product_category": 3,
+      "product_created_at": "2024-04-01",
+      "product_updated_at": "2024-04-02",
+      "product_pay_for_sail": "4.44"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "product_name": "имя_продукта_5",
+      "product_description": "описание_продукта_5",
+      "product_image": "",
+      "product_category": 2,
+      "product_created_at": "2024-05-01",
+      "product_updated_at": "2024-05-02",
+      "product_pay_for_sail": "5.55"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "product_name": "имя_продукта_6",
+      "product_description": "описание_продукта_6",
+      "product_image": "",
+      "product_category": 1,
+      "product_created_at": "2023-06-01",
+      "product_updated_at": "2023-06-02",
+      "product_pay_for_sail": "6.66"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "product_name": "имя_продукта_7",
+      "product_description": "описание_продукта_7",
+      "product_image": "",
+      "product_category": 2,
+      "product_created_at": "2023-07-01",
+      "product_updated_at": "2023-07-02",
+      "product_pay_for_sail": "7.77"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "product_name": "наименование_продукта_8",
+      "product_description": "описание_продукта_8",
+      "product_image": "",
+      "product_category": 1,
+      "product_created_at": "2023-08-01",
+      "product_updated_at": "2023-08-02",
+      "product_pay_for_sail": "8.88"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "product_name": "имя_продукта_9",
+      "product_description": "описание_продукта_9",
+      "product_image": "",
+      "product_category": 2,
+      "product_created_at": "2023-09-01",
+      "product_updated_at": "2023-09-01",
+      "product_pay_for_sail": "9.99"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "product_name": "имя_продукта_10",
+      "product_description": "описание_продукта_10",
+      "product_image": "products/scale_1200.png",
+      "product_category": 1,
+      "product_created_at": "2024-05-07",
+      "product_updated_at": "2024-05-07",
+      "product_pay_for_sail": "11.11"
+    }
+  }
+]
