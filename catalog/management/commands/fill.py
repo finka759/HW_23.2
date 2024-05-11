@@ -23,7 +23,6 @@ class Command(BaseCommand):
         return product_list
 
     def handle(self, *args, **options):
-        print('Hi Sky')
         with open('db.json', encoding='utf-8') as file:
             data_from_file = json.load(file)
 
