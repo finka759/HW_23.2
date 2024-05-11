@@ -27,7 +27,6 @@ class Command(BaseCommand):
         with open('db.json', encoding='utf-8') as file:
             data_from_file = json.load(file)
 
-
         Product.objects.all().delete()
         Category.objects.all().delete()
 
@@ -40,7 +39,6 @@ class Command(BaseCommand):
                          category_name=category.get('fields').get('category_name'),
                          category_description=category.get('fields').get('category_description'))
             )
-
 
         Category.objects.bulk_create(category_for_create)
 
@@ -56,6 +54,5 @@ class Command(BaseCommand):
                         product_pay_for_sail=product.get('fields').get('product_pay_for_sail')
                         )
             )
-
 
         Product.objects.bulk_create(product_for_create)
