@@ -27,12 +27,9 @@ class Command(BaseCommand):
         with open('db.json', encoding='utf-8') as file:
             data_from_file = json.load(file)
 
-        # Удалите все продукты
-        Category.objects.all().delete()
-        # Сброс индефикатора Category
-        Category.truncate_table_restart_id()
-        # Удалите все категории
+
         Product.objects.all().delete()
+        Category.objects.all().delete()
 
         category_for_create = []
         product_for_create = []
