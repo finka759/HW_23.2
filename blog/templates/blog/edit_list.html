@@ -1,10 +1,9 @@
-
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
 {% block content %}
 <div class="row text-center">
     <div class="col-12 mb-5">
-        <a type="button" class="btn btn-outline-primary" href={blog:create}>Добавить статью</a>
+        <a type="button" class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить статью</a>
     </div>
 
     {% for object in object_list %}
@@ -17,9 +16,9 @@
                     {{ object|title}}
                 </p>
                 <div class="btn-group">
-                    <a href="#" type="button" class="btn btn-outline-secondary">View</a>
-                    <a href="#" type="button" class="btn btn-outline-secondary">Edit</a>
-                    <a href="#" type="button" class="btn btn-outline-secondary">Delete</a>
+                    <a href="{% url 'blog:view' object.pk %}" type="button" class="btn btn-outline-secondary">View</a>
+                    <a href="{% url 'blog:edit' object.pk %}" type="button" class="btn btn-outline-secondary">Edit</a>
+                    <a href="{% url 'blog:delete' object.pk %}" type="button" class="btn btn-outline-secondary">Delete</a>
                 </div>
 
             </div>
