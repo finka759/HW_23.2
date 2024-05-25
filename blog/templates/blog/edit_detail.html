@@ -1,0 +1,31 @@
+{% extends 'catalog/base.html' %}
+{% block content%}
+<div class="row text-center">
+
+    <div class="col-12">
+
+        <div class="card mb-4 box-shadow">
+
+            <div class="card-body">
+                <h3 class="card-title">{{ object.title}}</h3>
+
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Содержимое: {{ object.content }}</li>
+                        <li class="list-group-item">Создан: {{ object.created_at }}</li>
+                        <li class="list-group-item">Просмотров: {{ object.count_of_views }}</li>
+
+                    </ul>
+                    <p>
+                        {{ object.content }}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock%}
