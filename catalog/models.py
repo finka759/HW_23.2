@@ -75,3 +75,36 @@ class Product(models.Model):
             f"{self.product_name} {self.product_description} {self.product_category} {self.product_pay_for_sail} "
             f"{self.product_created_at} {self.product_updated_at} {self.product_image}"
         )
+
+
+class Version(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        verbose_name="продукт",
+        related_name="version_product",
+    )
+    version_number = models.PositiveSmallIntegerField(
+        verbose_name="номер версии",
+        help_text="введите номер версии",
+        default=1
+    )
+    version_name = models.CharField(
+        max_length=50,
+        verbose_name="название версии",
+        help_text="введите наименование версии",
+        **NULLABLE,
+    )
+    is_current_version = models.BooleanField(
+        default=False,
+        verbose_name="актуальность версии",
+    )
+
+    class Meta:
+        verbose_name = "Версия продукта"
+        verbose_name_plural = "Версии продуктов"
+        ordering = ["version_number"]
+
+    def __str__(self):
+        return (f"номер верси: {self.version_number},название версии: {self.version_name},"
+                f"актуальность версии: {self.is_current_version}, продукт: {self.product}")

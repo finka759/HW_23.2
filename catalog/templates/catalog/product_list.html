@@ -2,6 +2,10 @@
 {% load my_tags %}
 {% block content %}
 <div class="row text-center">
+    <div class="btn-toolbar mb-5">
+        <a href="{% url 'catalog:create' %}" class="btn btn-primary">Создать продукт</a>
+    </div>
+
 
     {% for product in object_list %}
     <div class="col-3">
@@ -10,7 +14,22 @@
             <img src="{{product.product_image | media_filter}}" class="card-img-top" alt="ИЗОБРАЖЕНИЕ ПРОДУКТА">
             <div class="card-body">
                 <h5 class="card-title">{{ product.product_name }}</h5>
-                <p class="card-text">{{ product.product_description  | truncatechars:100 }}</p>
+                <p class="card-text">{{ product.product_description | truncatechars:100 }}</p>
+
+                {% for version_item in product.version_product.all %}
+
+                {% if version_item.is_current_version == True %}
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <li>номер версии: {{ version_item.version_number}}</li>
+                    <li>имя версии: {{ version_item.version_name}}</li>
+                </ul>
+                {% endif %}
+
+
+                {% endfor %}
+
+            </div>
+            <div class="card-footer">
                 <a href="{% url 'catalog:product' product.pk %}" class="btn btn-primary">Подробно</a>
             </div>
         </div>
