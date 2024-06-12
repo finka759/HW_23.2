@@ -15,8 +15,9 @@
                         <li class="list-group-item">Дата последнего изменения: {{ object.product_updated_at }}</li>
                     </ul>
                     <div class="btn-toolbar mb-5">
-                        <a href="#" class="btn btn-primary">В корзину</a>
+                        {% if user.is_authenticated %}
                         <a href="{%  url 'catalog:edit' product.pk  %}" class="btn btn-primary">Редактировать</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

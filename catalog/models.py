@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {"blank": True, "null": True}
 
 
@@ -64,6 +66,12 @@ class Product(models.Model):
         verbose_name="стоимость покупки",
         help_text="введите стоимость покупки",
     )
+    creator = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='cоздатель',
+        **NULLABLE,
+    )
 
     class Meta:
         verbose_name = "Продукты"
@@ -73,7 +81,7 @@ class Product(models.Model):
     def __str__(self):
         return (
             f"{self.product_name} {self.product_description} {self.product_category} {self.product_pay_for_sail} "
-            f"{self.product_created_at} {self.product_updated_at} {self.product_image}"
+            f"{self.product_created_at} {self.product_updated_at} {self.product_image} {self.creator}"
         )
 
 

@@ -6,18 +6,15 @@
 
         <div class="card mb-4 box-shadow">
             <div class="card-body">
-                <h3 class="card-title">Удаление</h3>
+                <h3 class="card-title">Регистрация</h3>
 
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <p>Хотите удалить материал "{{ object.title }}"?</p>
+                        {{ form.as_p}}
                         <button type="submit" class="btn btn-primary">
-                            Подтвердить
+                            Зарегистрироваться
                         </button>
-                        <a href="{% url 'blog:list' %}" class="btn btn-primary">
-                            Отмена
-                        </a>
                     </form>
 
 
