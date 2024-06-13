@@ -1,13 +1,18 @@
 import secrets
+import string
+import random
 
+from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 
 from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm
 from users.models import User
+
+CHARS = '+-*!&$#?=abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 
 
 class UserCreateView(CreateView):
@@ -38,3 +43,26 @@ def email_verification(request, token):
     user.save()
     return redirect(reverse("users:login"))
 
+
+class ResetPassword(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'users/reset_password.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        user = get_object_or_404(User, email=email)
+        new_password = ''
+        for i in range(10):
+            new_password += random.choice(CHARS)
+
+        message = (f'Ваш новый пароль: {new_password}'
+                   f'  Сохраняйте в тайне!')
+        send_mail(
+            subject='Новый пароль',
+            message=message,
+            from_email=EMAIL_HOST_USER,
+            recipient_list=[user.email]
+        )
+        user.set_password(new_password)
+        user.save()
+        return redirect('users:login')
