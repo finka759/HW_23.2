@@ -15,9 +15,11 @@
                         <li class="list-group-item">Дата последнего изменения: {{ object.product_updated_at }}</li>
                     </ul>
                     <div class="btn-toolbar mb-5">
-                        {% if user.is_authenticated %}
+
+                        {% if user == object.creator or perms.catalog.can_change_is_published or perms.catalog.can_change_product_description or perms.catalog.can_change_product_category %}
                         <a href="{%  url 'catalog:edit' product.pk  %}" class="btn btn-primary">Редактировать</a>
                         {% endif %}
+
                     </div>
                 </div>
             </div>

@@ -35,6 +35,12 @@ class ProductForm(StyleFormMixin, ModelForm):
         return self.check_stop_words(cleaned_data)
 
 
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ("is_published", "product_description", "product_category")
+
+
 class VersionForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Version
