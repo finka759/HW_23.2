@@ -1,13 +1,15 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-SECRET_KEY = 'django-insecure-=d^m5@1wce*k^zhv^py@twnrryo@f-^0_73xa+$s(^d1n5+)!&'
-
-
-DEBUG = True
+DEBUG = (os.getenv('DEBUG', False) == 'True')
 
 ALLOWED_HOSTS = ["*"]
 
@@ -54,18 +56,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shop_20_1',
-        'USER': 'postgres',
-        'PASSWORD': '1616',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'ENGINE': os.getenv('ENGINE'),
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT')
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -82,7 +82,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ru-ru'
 
@@ -91,7 +90,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (BASE_DIR / 'static',)
@@ -106,14 +104,21 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = 'catalog:index'
 LOGOUT_REDIRECT_URL = 'catalog:index'
 
-
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'AlSrVch@yandex.ru'
-EMAIL_HOST_PASSWORD = 'dwznwnicqmpgdluk'
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False) == 'True'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False) == 'True'
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+CACHE_ENABLED = os.getenv('CACHE_ENABLED', False) == 'True'
+if CACHE_ENABLED:
+    CACHES = {
+        'default': {
+            'BACKEND': os.getenv('BACKEND'),
+            'LOCATION': os.getenv('LOCATION'),
+        }
+    }
